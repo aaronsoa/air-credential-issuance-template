@@ -8,9 +8,10 @@ export const formatNumber = (num: number, decimalPlaces?: number) => {
   });
 };
 
-export const formatAddress = (address: string) => {
+export const formatAddress = (address: string, chars: number = 6) => {
   if (!isAddress(address)) return "Unknown";
-  return `${address.slice(0, 6)}...${address.slice(-4)}`;
+  const endChars = Math.max(chars - 2, 2);
+  return `${address.slice(0, chars)}...${address.slice(-endChars)}`;
 };
 
 export const formatKey = (key: string) => {
